@@ -1,0 +1,12 @@
+// GTA V ASI LOADER (build May  2 2015)
+//     (C) Alexander Blade 2015
+LIB: "C:\Windows\system32\dinput8.dll" => 00007FFE20150000
+API: "DirectInput8Create" => 00007FFE20158F80
+API: "DllCanUnloadNow" => 00007FFE20169EB0
+API: "DllGetClassObject" => 00007FFE20169F80
+API: "DllRegisterServer" => 00007FFE20173CB0
+API: "DllUnregisterServer" => 00007FFE20173F30
+LOADER: Loading *.asi plugins
+ASI: Loading "F:\Games\EpicLibrary\GTAV\OpenIV.asi"
+     "OpenIV.asi" => 00007FFDFAE30000
+LOADER: Finished loading *.asi plugins

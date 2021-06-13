@@ -1,0 +1,30 @@
+keys,en,fr
+LIB_ADD_GAME,Add game to library,Ajouter un jeu
+LIB_EDIT_GAME,Edit selected game,Editer le jeu sélectionné
+LIB_DELETE_GAME,Delete selected game,Supprimer le jeu sélectionné
+ACCESS_SETTING,Open settings menu,Ouvrir paramètres
+ADDSHEET_NAME,Game name,Nom du jeu
+ADDSHEET_EXE,Executable path,Chemin de l'exécutable
+ADDSHEET_TEXTURE,Icon,Icone
+ADDSHEET_ARGS,Arguments,Arguments
+BUTTON_SAVE,Save,Sauvegarder
+BUTTON_CANCEL,Cancel,Annuler
+DELETE_MESSAGE,Are you sure?,Etes-vous sur?
+YES,Yes,Oui
+NO,No,Non
+SETTING_BG_COLOR,Background color,Couleur de fond
+SETTING_CLEAR_LIB,Clear game library,Supprimer tout les jeux
+SETTING_LIB_COUNT,Games in library,Nombres de jeux
+SETTING_LNG,Language,Langue
+SETTING_CLEAR_LIB_BUTTON,Clear,Supprimer
+SETTING_TITLE,Settings,Paramètres
+BUTTON_ADD,Add,Ajouter
+BUTTON_CLEAR,Clear,Supprimer
+SETTING_FULLSCREEN_SWITCH,Fullscreen,Plein écran
+ADDSHEET_HIDE,Hide,Masquer
+LIB_HIDE_GAME,Show/Hide selected game,Afficher/Masquer jeu sélectionné
+LABEL_EDIT_MODE,Edit mode,Mode édition
+STANDBY_WAIT,"Game is starting, please stand-by","Démarrage du jeu, veuillez patienter"
+SETTING_COLUMN_COUNT,Number of games per line,Nombre de jeu par rangés
+BUTTON_OPEN_STARTUP,Open Startup folder,Ouvrier dossier “Startup”
+SETTING_OPEN_STARTUP,Place a shortcut to the .exe\nhere to start with windows,Placer un raccourcis vers l’application\ndans ce dossier pour démarrer avec windows

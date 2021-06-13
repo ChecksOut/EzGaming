@@ -1,0 +1,264 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://visual/themes/menu_theme.tres" type="Theme" id=1]
+[ext_resource path="res://scripts/edit_mode/game_sheet_popup.gd" type="Script" id=2]
+[ext_resource path="res://res_game_node.gd" type="Script" id=3]
+
+[node name="GameSheetPopUp" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.002
+margin_top = -172.0
+margin_right = 249.998
+margin_bottom = 206.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 500, 250 )
+focus_mode = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+ExeFileDialog = NodePath("ExeFileDialog")
+TextureFileDialog = NodePath("TextureFileDialog")
+currentGameName = NodePath("SheetSplit/NameSplit/GameName")
+currentArguments = NodePath("SheetSplit/ArgSplit/LineEdit")
+currentValueShow = NodePath("SheetSplit/HideSplit/CheckButton")
+CurrentGameIcon = NodePath("SheetSplit/IconSplit/HBoxContainer2/Panel/TextureRect")
+CurrentExePath = NodePath("SheetSplit/ExePathSplit/ExePath")
+GameResource = ExtResource( 3 )
+
+[node name="SheetSplit" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = -20.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NameSplit" type="HBoxContainer" parent="SheetSplit"]
+margin_right = 460.0
+margin_bottom = 24.0
+
+[node name="Label" type="Label" parent="SheetSplit/NameSplit"]
+margin_top = 5.0
+margin_right = 111.0
+margin_bottom = 19.0
+text = "ADDSHEET_NAME"
+
+[node name="GameName" type="LineEdit" parent="SheetSplit/NameSplit"]
+margin_left = 115.0
+margin_right = 460.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 200, 0 )
+size_flags_horizontal = 3
+expand_to_text_length = true
+clear_button_enabled = true
+
+[node name="ExePathSplit" type="HBoxContainer" parent="SheetSplit"]
+margin_top = 28.0
+margin_right = 460.0
+margin_bottom = 52.0
+
+[node name="Label" type="Label" parent="SheetSplit/ExePathSplit"]
+margin_top = 5.0
+margin_right = 95.0
+margin_bottom = 19.0
+text = "ADDSHEET_EXE"
+
+[node name="ExePath" type="LineEdit" parent="SheetSplit/ExePathSplit"]
+margin_left = 99.0
+margin_right = 432.0
+margin_bottom = 24.0
+rect_min_size = Vector2( 225, 0 )
+size_flags_horizontal = 3
+placeholder_text = "C:/Games/MyGames.exe"
+
+[node name="ExeBrowse" type="Button" parent="SheetSplit/ExePathSplit"]
+margin_left = 436.0
+margin_right = 460.0
+margin_bottom = 24.0
+text = "..."
+
+[node name="IconSplit" type="VBoxContainer" parent="SheetSplit"]
+margin_top = 56.0
+margin_right = 460.0
+margin_bottom = 242.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SheetSplit/IconSplit"]
+margin_right = 460.0
+margin_bottom = 20.0
+alignment = 1
+
+[node name="Label" type="Label" parent="SheetSplit/IconSplit/HBoxContainer"]
+margin_top = 3.0
+margin_right = 127.0
+margin_bottom = 17.0
+text = "ADDSHEET_TEXTURE"
+
+[node name="Spacer" type="Control" parent="SheetSplit/IconSplit/HBoxContainer"]
+margin_left = 131.0
+margin_right = 240.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureAdd" type="Button" parent="SheetSplit/IconSplit/HBoxContainer"]
+margin_left = 244.0
+margin_right = 345.0
+margin_bottom = 20.0
+text = "BUTTON_ADD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureClear" type="Button" parent="SheetSplit/IconSplit/HBoxContainer"]
+margin_left = 349.0
+margin_right = 460.0
+margin_bottom = 20.0
+text = "BUTTON_CLEAR"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SheetSplit/IconSplit"]
+margin_top = 24.0
+margin_right = 460.0
+margin_bottom = 186.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="SheetSplit/IconSplit/HBoxContainer2"]
+margin_right = 139.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="SheetSplit/IconSplit/HBoxContainer2"]
+margin_left = 143.0
+margin_right = 316.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 100, 100 )
+rect_clip_content = true
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.25
+
+[node name="TextureRect" type="TextureRect" parent="SheetSplit/IconSplit/HBoxContainer2/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand = true
+stretch_mode = 6
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Control2" type="Control" parent="SheetSplit/IconSplit/HBoxContainer2"]
+margin_left = 320.0
+margin_right = 460.0
+margin_bottom = 162.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ArgSplit" type="HBoxContainer" parent="SheetSplit"]
+margin_top = 246.0
+margin_right = 460.0
+margin_bottom = 270.0
+
+[node name="Label" type="Label" parent="SheetSplit/ArgSplit"]
+margin_top = 5.0
+margin_right = 107.0
+margin_bottom = 19.0
+text = "ADDSHEET_ARGS"
+
+[node name="LineEdit" type="LineEdit" parent="SheetSplit/ArgSplit"]
+margin_left = 111.0
+margin_right = 460.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+expand_to_text_length = true
+clear_button_enabled = true
+
+[node name="HideSplit" type="HBoxContainer" parent="SheetSplit"]
+margin_top = 274.0
+margin_right = 460.0
+margin_bottom = 314.0
+
+[node name="Label" type="Label" parent="SheetSplit/HideSplit"]
+margin_top = 13.0
+margin_right = 105.0
+margin_bottom = 27.0
+text = "ADDSHEET_HIDE"
+
+[node name="CheckButton" type="CheckButton" parent="SheetSplit/HideSplit"]
+margin_left = 109.0
+margin_right = 185.0
+margin_bottom = 40.0
+
+[node name="ButtonSplit" type="HBoxContainer" parent="SheetSplit"]
+margin_top = 318.0
+margin_right = 460.0
+margin_bottom = 338.0
+alignment = 1
+
+[node name="SaveSheet" type="Button" parent="SheetSplit/ButtonSplit"]
+margin_left = 116.0
+margin_right = 219.0
+margin_bottom = 20.0
+text = "BUTTON_SAVE"
+
+[node name="CancelSheet" type="Button" parent="SheetSplit/ButtonSplit"]
+margin_left = 223.0
+margin_right = 344.0
+margin_bottom = 20.0
+text = "BUTTON_CANCEL"
+
+[node name="ExeFileDialog" type="FileDialog" parent="."]
+margin_left = -37.8402
+margin_top = -26.9086
+margin_right = 521.16
+margin_bottom = 402.091
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.exe" )
+current_dir = "/"
+current_path = "/"
+
+[node name="TextureFileDialog" type="FileDialog" parent="."]
+margin_left = -40.0
+margin_top = -30.0
+margin_right = 520.0
+margin_bottom = 400.0
+window_title = "Open a File"
+resizable = true
+mode = 0
+access = 2
+filters = PoolStringArray( "*.png", "*.jpg", "*.webp", "*.jpeg" )
+current_dir = "/"
+current_path = "/"
+[connection signal="button_up" from="SheetSplit/ExePathSplit/ExeBrowse" to="." method="_on_ExeBrowse_button_up"]
+[connection signal="button_up" from="SheetSplit/IconSplit/HBoxContainer/TextureAdd" to="." method="_on_TextureAdd_button_up"]
+[connection signal="button_up" from="SheetSplit/IconSplit/HBoxContainer/TextureClear" to="." method="_on_TextureClear_button_up"]
+[connection signal="button_up" from="SheetSplit/ButtonSplit/SaveSheet" to="." method="_on_SaveSheet_button_up"]
+[connection signal="button_up" from="SheetSplit/ButtonSplit/CancelSheet" to="." method="_on_CancelSheet_button_up"]
+[connection signal="file_selected" from="ExeFileDialog" to="." method="_on_ExeFileDialog_file_selected"]
+[connection signal="file_selected" from="TextureFileDialog" to="." method="_on_TextureFileDialog_file_selected"]

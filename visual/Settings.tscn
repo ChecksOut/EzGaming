@@ -1,0 +1,329 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://font_Roboto_DF.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scripts/edit_mode/settings.gd" type="Script" id=2]
+[ext_resource path="res://visual/themes/menu_theme.tres" type="Theme" id=3]
+[ext_resource path="res://scripts/edit_mode/emulators/EmulatorsSettings.gd" type="Script" id=4]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+LanguageSelector = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3/LanguageSelector")
+BackgroundColor = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer/BGColorPickerButton")
+ColumnCount = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6/ColumnCount")
+Fullscreen = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5/CheckButton")
+GameCount = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4/GameCount")
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.705882 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -340.5
+margin_top = -272.0
+margin_right = 340.5
+margin_bottom = 272.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="Control" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 30.0
+margin_top = 30.0
+margin_right = -30.0
+margin_bottom = -30.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Container"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Container/VBoxContainer"]
+margin_right = 622.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/HBoxContainer2"]
+margin_right = 598.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_TITLE"
+align = 1
+
+[node name="CloseButton" type="Button" parent="Panel/Container/VBoxContainer/HBoxContainer2"]
+margin_left = 602.0
+margin_right = 622.0
+margin_bottom = 20.0
+text = "X"
+
+[node name="TabContainer" type="TabContainer" parent="Panel/Container/VBoxContainer"]
+margin_top = 24.0
+margin_right = 622.0
+margin_bottom = 484.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tab_align = 0
+drag_to_rearrange_enabled = true
+use_hidden_tabs_for_min_size = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="General" type="Control" parent="Panel/Container/VBoxContainer/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 8.0
+margin_right = 618.0
+margin_bottom = 28.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3"]
+margin_right = 103.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_LNG"
+
+[node name="LanguageSelector" type="OptionButton" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3"]
+margin_left = 107.0
+margin_right = 175.0
+margin_bottom = 20.0
+toggle_mode = false
+text = "Select"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 32.0
+margin_right = 618.0
+margin_bottom = 62.0
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
+margin_top = 5.0
+margin_right = 151.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_BG_COLOR"
+
+[node name="BGColorPickerButton" type="ColorPickerButton" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
+margin_left = 155.0
+margin_right = 190.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 35, 30 )
+shortcut_in_tooltip = false
+edit_alpha = false
+
+[node name="Control" type="Control" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
+margin_left = 194.0
+margin_right = 622.0
+margin_bottom = 30.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 66.0
+margin_right = 618.0
+margin_bottom = 96.0
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
+margin_top = 5.0
+margin_right = 150.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_CLEAR_LIB"
+
+[node name="ClearLibrary" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
+margin_left = 154.0
+margin_right = 351.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 60, 30 )
+text = "SETTING_CLEAR_LIB_BUTTON"
+expand_icon = true
+
+[node name="Label3" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
+margin_left = 355.0
+margin_top = 5.0
+margin_right = 509.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_LIB_COUNT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GameCount" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
+margin_left = 513.0
+margin_top = 5.0
+margin_right = 513.0
+margin_bottom = 24.0
+custom_fonts/font = ExtResource( 1 )
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 100.0
+margin_right = 618.0
+margin_bottom = 140.0
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5"]
+margin_top = 10.0
+margin_right = 234.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_FULLSCREEN_SWITCH"
+
+[node name="CheckButton" type="CheckButton" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5"]
+margin_left = 238.0
+margin_right = 314.0
+margin_bottom = 40.0
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 144.0
+margin_right = 618.0
+margin_bottom = 168.0
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6"]
+margin_top = 2.0
+margin_right = 196.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_COLUMN_COUNT"
+
+[node name="ColumnCount" type="LineEdit" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6"]
+margin_left = 200.0
+margin_right = 258.0
+margin_bottom = 24.0
+align = 1
+max_length = 2
+placeholder_text = "3-10"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 172.0
+margin_right = 618.0
+margin_bottom = 192.0
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
+margin_right = 190.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETTING_OPEN_STARTUP"
+max_lines_visible = 2
+
+[node name="Button" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
+margin_left = 194.0
+margin_right = 364.0
+margin_bottom = 20.0
+text = "BUTTON_OPEN_STARTUP"
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_left = -4.0
+margin_top = 196.0
+margin_right = 618.0
+margin_bottom = 216.0
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
+margin_right = 253.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ouvrir dossier sauvegardes* DEBUG"
+max_lines_visible = 2
+
+[node name="Button" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
+margin_left = 257.0
+margin_right = 319.0
+margin_bottom = 20.0
+text = "OUVRIR"
+
+[node name="Emulators" type="Control" parent="Panel/Container/VBoxContainer/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 4.0
+margin_top = 32.0
+margin_right = -4.0
+margin_bottom = -4.0
+script = ExtResource( 4 )
+
+[node name="VSeparator" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/Emulators"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator"]
+margin_right = 210.0
+margin_bottom = 424.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="EmuList" type="ItemList" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator/VBoxContainer"]
+margin_right = 210.0
+margin_bottom = 400.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator/VBoxContainer"]
+margin_top = 404.0
+margin_right = 210.0
+margin_bottom = 424.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AddEmu" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator/VBoxContainer/HBoxContainer"]
+margin_right = 20.0
+margin_bottom = 20.0
+text = "+"
+
+[node name="RemoveEmu" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator/VBoxContainer/HBoxContainer"]
+margin_left = 24.0
+margin_right = 41.0
+margin_bottom = 20.0
+text = "-"
+
+[node name="EditEmu" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator/VBoxContainer/HBoxContainer"]
+margin_left = 45.0
+margin_right = 69.0
+margin_bottom = 20.0
+text = "..."
+
+[node name="Container" type="Container" parent="Panel/Container/VBoxContainer/TabContainer/Emulators/VSeparator"]
+margin_left = 214.0
+margin_right = 614.0
+margin_bottom = 424.0
+rect_min_size = Vector2( 400, 0 )
+
+[connection signal="button_up" from="Panel/Container/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_CloseButton_button_up"]
+[connection signal="item_selected" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3/LanguageSelector" to="." method="_on_LanguageSelector_item_selected"]
+[connection signal="color_changed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer/BGColorPickerButton" to="." method="_on_BGColorPickerButton_color_changed"]
+[connection signal="popup_closed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer/BGColorPickerButton" to="." method="_on_BGColorPickerButton_popup_closed"]
+[connection signal="pressed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4/ClearLibrary" to="." method="_on_ClearLibrary_pressed"]
+[connection signal="text_entered" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6/ColumnCount" to="." method="_on_ColumnCount_text_entered"]
+[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7/Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8/Button" to="." method="_on_Button_button_up"]
