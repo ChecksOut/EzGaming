@@ -7,18 +7,33 @@ export(NodePath) var currentArguments
 export(NodePath) var currentValueShow
 export(NodePath) var CurrentGameIcon
 export(NodePath) var CurrentExePath
-var game_icon_path := ""
+var game_icon_path := "" setget set_game_icon_path
 export(Resource) var GameResource
+const default_texture = "res://visual/icons/default_image.png"
+
+func set_game_icon_path(path):
+	var file = File.new()
+	game_icon_path = ""
+	if file.file_exists(path):
+		game_icon_path = path
+	elif file.file_exists(default_texture):
+		game_icon_path = default_texture
+	else:
+		game_icon_path = ""
+			 
 
 func _ready():
 	Globals.GameHub.lock_input = true
+	game_icon_path = default_texture
 	grab_focus()
 
 func load_game_infos(game):
 	get_node(currentGameName).text = game.name
 	get_node(CurrentExePath).text = game.exe_path
 	get_node(currentValueShow).set_pressed(game.hide)
-	get_node(CurrentGameIcon).texture = load(game.texture_path)
+	#if game.texture_path = ""
+	set_game_icon_path(game.texture_path)
+	get_node(CurrentGameIcon).texture = load(game_icon_path)
 	get_node(currentArguments).text = game.arguments
 
 func _on_ExeFileDialog_file_selected(path):
@@ -48,8 +63,9 @@ func _on_SaveSheet_button_up():
 	game.exe_path = get_node(CurrentExePath).text
 	game.arguments = get_node(currentArguments).text
 	game.hide = get_node(currentValueShow).is_pressed()
-	if game_icon_path != "":
-		game.texture_path = game_icon_path
+	#if game_icon_path != "":
+	#game_icon_path = game_icon_path
+	game.texture_path = game_icon_path
 	#if get_node(CurrentGameIcon).texture != null:
 		#game.texture_path = get_node(CurrentGameIcon).texture.get_path()
 	#Globals.GameLibrary.add_game_to_library(game)
@@ -61,6 +77,7 @@ func _on_TextureAdd_button_up():
 	
 func _on_TextureClear_button_up():
 	get_node(CurrentGameIcon).texture = null
+	set_game_icon_path("")
 
 func _on_ExeBrowse_button_up():
 	get_node(ExeFileDialog).popup()

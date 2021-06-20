@@ -9,49 +9,47 @@ export(PackedScene) var EditGameScene
 
 onready var StateManager = $StateManager
 
-export(NodePath) var GameIconListPath
-var GameIconList
+export(NodePath) var _ItemListPath
+var VisualGameList
 
 onready var SelectionHand = $Selection
 
-const ICON_RATIO := 1 #1.778 is 16/9
+#const ICON_RATIO := 1 #1.778 is 16/9
 const CFG_PATH := "user://settings.cfg"
 
-var _current_mode := "Play"
+var _current_mode := "GameSelection"
 var _loading_state
 var lock_input : = false
 var pid
 
 func _ready():
 	#_loading_state.resume()
-	Globals.Configuration.reload_configuration()
 	_setup_window()
-	GameIconList = get_node(GameIconListPath)
-	Globals.GameHub = self
-	_initialize()
+	VisualGameList = get_node(_ItemListPath)
+	Globals.Configuration.reload_configuration()
+	_initialize_configuration()
 	Globals.GameLibrary.connect("library_updated", self, "_on_library_updated")
 	Globals.Configuration.connect("configuration_updated", self, "_on_configuration_updated")
-	_rebuild_game_icon_list()
+	_rebuild_visual_game_list()
 	_initialize_edit_tool()
-	switch_to_mode("Play")
+	switch_to_mode("GameSelection")
+	
 	
 func _setup_window():
 	OS.current_screen = 0
 	OS.window_position = Vector2()
 	OS.window_fullscreen = Globals.Configuration.current["fullscreen"]
 	
-func _initialize():
-	#yield()
+func _initialize_configuration():
 	_set_language(Globals.Configuration.current["language"])
-	_set_icon_size(Globals.Configuration.current["column_count"])
 	_set_background_color(Globals.Configuration.current["background_color"])
-
+	VisualGameList.set_items_size(Globals.Configuration.current["column_count"])
 	
 func _on_configuration_updated():
 	get_tree().reload_current_scene()
 	
 func _on_library_updated():
-	_rebuild_game_icon_list()
+	_rebuild_visual_game_list()
 
 func _initialize_edit_tool():
 	if not EditTool is _EditToolScenes:
@@ -63,14 +61,14 @@ func _initialize_edit_tool():
 		EditTool.HideGame.connect("button_up", self, "_hide_selected_game")
 		EditTool.AccessSetting.connect("button_up", self, "_load_setting_popup")
 
-func _rebuild_game_icon_list():
-	GameIconList.clear()
+func _rebuild_visual_game_list():
+	VisualGameList.clear()
 	var texture = Texture.new()
 	if Globals.GameLibrary.get_game_library() == null:
 		print("Invalid or missing Game Library")
 		return
 	for game in Globals.GameLibrary.get_game_library().games:
-		if (_current_mode == "Play" and game.hide == false) or _current_mode == "Edit":
+		if (_current_mode == "GameSelection" and game.hide == false) or _current_mode == "EditLibrary":
 			var img = Image.new()
 			var err = img.load(game.texture_path)
 			if err != OK:
@@ -79,9 +77,9 @@ func _rebuild_game_icon_list():
 			var tex = ImageTexture.new()
 			tex.create_from_image(img)
 			texture = tex
-			GameIconList.add_icon_item(tex, true)
-	GameIconList.select(0, true)
-	GameIconList.grab_focus()
+			VisualGameList.add_icon_item(tex, true)
+	VisualGameList.select(0, true)
+	VisualGameList.grab_focus()
 
 func _load_add_game_popup():
 	var add_game_instance = AddGameScene.instance()
@@ -90,8 +88,8 @@ func _load_add_game_popup():
 
 	
 func _load_edit_game_popup():
-	if GameIconList.is_anything_selected():
-		var id = GameIconList.get_selected_items()[0]
+	if VisualGameList.is_anything_selected():
+		var id = VisualGameList.get_selected_items()[0]
 		var edit_game_instance = EditGameScene.instance()
 		edit_game_instance.owner = self
 		add_child(edit_game_instance)
@@ -99,15 +97,15 @@ func _load_edit_game_popup():
 		edit_game_instance.load_game_infos(Globals.GameLibrary.get_game_from_id(id))
 		
 func _delete_selected_game():
-	if GameIconList.is_anything_selected():
-		var id = GameIconList.get_selected_items()[0]
-		GameIconList.remove_item(id)
+	if VisualGameList.is_anything_selected():
+		var id = VisualGameList.get_selected_items()[0]
+		VisualGameList.remove_item(id)
 		Globals.GameLibrary.remove_game_from_library(Globals.GameLibrary.game_library.games[id])
 		print("removed id : " + str(id))
 
 func _hide_selected_game():
-	if GameIconList.is_anything_selected():
-		var id = GameIconList.get_selected_items()[0]
+	if VisualGameList.is_anything_selected():
+		var id = VisualGameList.get_selected_items()[0]
 		Globals.GameLibrary.edit_hide_mode(id)
 		
 func _load_setting_popup():
@@ -120,15 +118,15 @@ func _set_background_color(rgb : Color):
 	var new_color = StyleBoxFlat.new()
 	new_color.bg_color = rgb
 	$Panel.theme["Panel/styles/panel"] = new_color
-	GameIconList.theme["ItemList/styles/bg"] = new_color
+	VisualGameList.theme["ItemList/styles/bg"] = new_color
 
-func _set_icon_size(nb):
-	GameIconList.max_columns = nb
-	var icon_max_width = int(OS.window_size.x / GameIconList.max_columns) - (20 - nb)  #10col = 6, 7col = 6, 5col = 20
-	var icon_max_height = (icon_max_width / ICON_RATIO)
-	GameIconList.fixed_icon_size = Vector2(icon_max_width, icon_max_height)
-	GameIconList.fixed_column_width = icon_max_width
-	print(icon_max_width)
+#func _set_icon_size(nb):
+#	VisualGameList.max_columns = nb
+#	var icon_max_width = int(OS.window_size.x / VisualGameList.max_columns) - (20 - nb)  #10col = 6, 7col = 6, 5col = 20
+#	var icon_max_height = (icon_max_width / ICON_RATIO)
+#	VisualGameList.fixed_icon_size = Vector2(icon_max_width, icon_max_height)
+#	VisualGameList.fixed_column_width = icon_max_width
+#	print(icon_max_width)
 
 func _gui_input(event):
 	print("gui input")
@@ -143,21 +141,21 @@ func _gui_input(event):
 
 func _process(delta):
 	
-	GameIconList.ensure_current_is_visible()
+	VisualGameList.ensure_current_is_visible()
 	if Input.is_action_pressed("exit_app"):
 		get_tree().quit()
 	if lock_input:
 		return
 	if Input.is_action_just_released("play_mode"):
-		switch_to_mode("Play")
+		switch_to_mode("GameSelection")
 		return
 	if Input.is_action_just_released("edit_mode"):
-		switch_to_mode("Edit")
+		switch_to_mode("EditLibrary")
 		return
 	match _current_mode:
-		"Play":
+		"GameSelection":
 			
-			#GameIconList.grab_focus()
+			#VisualGameList.grab_focus()
 			#print("caca " + str(delta))
 			if Input.is_action_pressed("ui_end"):
 				#WORK IN BORDERLESS MODE
@@ -188,18 +186,19 @@ func _process(delta):
 					
 					OS.kill(pid)
 			pass
-		"Edit":
-			if Input.is_action_just_released("add_game"):
-				_load_add_game_popup()
-			if Input.is_action_just_released("edit_game"):
-				_load_edit_game_popup()
-			if Input.is_action_just_released("remove_game"):
-				_delete_selected_game()
-			if Input.is_action_just_released("activate_game"):
-				_hide_selected_game()
-			if Input.is_action_just_released("settings"):
-				_load_setting_popup()
-		"StandBy":
+		"EditLibrary":
+#			if Input.is_action_just_released("add_game"):
+#				_load_add_game_popup()
+#			if Input.is_action_just_released("edit_game"):
+#				_load_edit_game_popup()
+#			if Input.is_action_just_released("remove_game"):
+#				_delete_selected_game()
+#			if Input.is_action_just_released("activate_game"):
+#				_hide_selected_game()
+#			if Input.is_action_just_released("settings"):
+#				_load_setting_popup()
+			pass
+		"BackgroundMode":
 			#PREAPRE FOR GAME START
 			pass
 		_:
@@ -207,19 +206,19 @@ func _process(delta):
 
 func switch_to_mode(mode_name):
 	match mode_name:
-		"Play":
+		"GameSelection":
 			EditTool.hide()
-			GameIconList.select(0, true)
-			GameIconList.emit_signal("item_selected", 0)
-			_current_mode = "Play"
+			VisualGameList.select(0, true)
+			VisualGameList.emit_signal("item_selected", 0)
+			_current_mode = "GameSelection"
 			SelectionHand.show()
-			GameIconList.grab_focus()
-		"Edit":
+			VisualGameList.grab_focus()
+		"EditLibrary":
 			EditTool.show()
 			SelectionHand.hide()
-			_current_mode = "Edit"
-		"StandBy":
-			_current_mode = "StandBy"
+			_current_mode = "EditLibrary"
+		"BackgroundMode":
+			_current_mode = "BackgroundMode"
 		_:
 			print("Invalid mode name !")
 
@@ -227,8 +226,19 @@ func _set_language(loc):
 	TranslationServer.set_locale(loc)
 	
 func _handle_app_start(idx):
-	switch_to_mode("Play")
-	#print("caca id: " + str(index))
+	# IF is button shutdown
+	if idx == 0:
+		$Confirm.popup_centered()
+		yield($Confirm, "popup_hide")
+		if not $Confirm.is_confirmed:
+			print("false")
+			#lock_input = true
+			#$Timer.start()
+			VisualGameList.grab_focus()
+			return
+	print("true")
+	return
+	switch_to_mode("BackgroundMode")
 	var app_path = Globals.GameLibrary.game_library.games[idx].exe_path
 	var arg_array = Globals.GameLibrary.game_library.games[idx].arguments.split(" ", false)
 	print(arg_array)
@@ -240,3 +250,8 @@ func _handle_app_start(idx):
 func _on_ItemList_item_activated(index):
 	_handle_app_start(index)
 
+
+
+func _on_Input_Timer_timeout():
+	lock_input = false
+	pass # Replace with function body.

@@ -12,6 +12,10 @@ func _init():
 	GameLibrary = _GameLibraryScript.new()
 	Configuration = _ConfigurationScript.new()
 	
+	
 func _ready():
 	GameHub = get_tree().get_current_scene()
+	pass
+	#yield(get_tree(), "idle_frame")
+	
 

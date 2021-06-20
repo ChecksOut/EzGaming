@@ -171,6 +171,7 @@ text = "ACCESS_SETTING"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="gui_input" from="." to="." method="_on_EditTools_gui_input"]
 [connection signal="button_up" from="VBoxContainer/AddContainer/AddButton" to="." method="_on_AddButton_button_up"]
 [connection signal="pressed" from="VBoxContainer/AddContainer/AddButton" to="." method="_on_AddButton_pressed"]

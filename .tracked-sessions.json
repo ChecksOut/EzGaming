@@ -2414,5 +2414,67 @@
         "stopped_at": 1616961262
       }
     ]
+  },
+  {
+    "session_name": "Session #30",
+    "elapsed_time": 2407,
+    "started_at": 1624161575,
+    "stopped_at": 1624163982,
+    "sections": [
+      {
+        "view": "2D",
+        "elapsed_time": 78,
+        "started_at": 1624161575,
+        "stopped_at": 1624161653
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 234,
+        "started_at": 1624161653,
+        "stopped_at": 1624161887
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 9,
+        "started_at": 1624161887,
+        "stopped_at": 1624161896
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 303,
+        "started_at": 1624161896,
+        "stopped_at": 1624162199
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 8,
+        "started_at": 1624162199,
+        "stopped_at": 1624162207
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 430,
+        "started_at": 1624162207,
+        "stopped_at": 1624162637
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 22,
+        "started_at": 1624162637,
+        "stopped_at": 1624162659
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 1310,
+        "started_at": 1624162659,
+        "stopped_at": 1624163969
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 13,
+        "started_at": 1624163969,
+        "stopped_at": 1624163982
+      }
+    ]
   }
 ]

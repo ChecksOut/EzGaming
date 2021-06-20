@@ -70,3 +70,7 @@ next={
 [locale]
 
 translations=PoolStringArray( "res://translations/languages.en.translation", "res://translations/languages.fr.translation" )
+
+[rendering]
+
+quality/driver/driver_name="GLES2"

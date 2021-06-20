@@ -255,6 +255,7 @@ access = 2
 filters = PoolStringArray( "*.png", "*.jpg", "*.webp", "*.jpeg" )
 current_dir = "/"
 current_path = "/"
+
 [connection signal="button_up" from="SheetSplit/ExePathSplit/ExeBrowse" to="." method="_on_ExeBrowse_button_up"]
 [connection signal="button_up" from="SheetSplit/IconSplit/HBoxContainer/TextureAdd" to="." method="_on_TextureAdd_button_up"]
 [connection signal="button_up" from="SheetSplit/IconSplit/HBoxContainer/TextureClear" to="." method="_on_TextureClear_button_up"]

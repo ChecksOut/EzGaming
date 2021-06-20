@@ -1,4 +1,5 @@
-.import
-.exe
-.pck
-.zip
+*.import
+*.exe
+*.pck
+*.zip
+

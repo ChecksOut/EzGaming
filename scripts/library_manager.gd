@@ -12,10 +12,10 @@ signal library_updated
 func _init():
 	game_library = GameList.new()
 	load_library_from_disk()
-	#add_shutdown_icon()
+	#_add_shutdown_icon()
 	pass
 	
-func add_shutdown_icon():
+func _add_shutdown_icon():
 	var game_res = load("res://res_game_node.gd")
 	var shutdown_icon = game_res.new()
 	shutdown_icon.texture_path = "res://visual/icons/shutdown.png"
@@ -31,7 +31,7 @@ func edit_hide_mode(id):
 		
 func clear_library():
 	game_library.games.clear()
-	add_shutdown_icon()
+	_add_shutdown_icon()
 	_on_library_updated()
 
 func add_game_to_library(game : Resource):
