@@ -19,13 +19,18 @@ const CFG_PATH := "user://settings.cfg"
 
 var _current_mode := "GameSelection"
 var _loading_state
+var _input_kill_pid := [] setget set_input_kill_pid
 var lock_input : = false
 var pid
+
+func set_input_kill_pid(arr):
+	_input_kill_pid = arr
 
 func _ready():
 	#_loading_state.resume()
 	_setup_window()
 	VisualGameList = get_node(_ItemListPath)
+	Globals.GameHub = self
 	Globals.Configuration.reload_configuration()
 	_initialize_configuration()
 	Globals.GameLibrary.connect("library_updated", self, "_on_library_updated")
@@ -129,7 +134,7 @@ func _set_background_color(rgb : Color):
 #	print(icon_max_width)
 
 func _gui_input(event):
-	print("gui input")
+	#print("gui input")
 	if event.is_action("ui_end"):
 		print("kill pid 3 :" + str(pid))
 		if pid:
@@ -157,6 +162,23 @@ func _process(delta):
 			
 			#VisualGameList.grab_focus()
 			#print("caca " + str(delta))
+	
+			pass
+		"EditLibrary":
+#			if Input.is_action_just_released("add_game"):
+#				_load_add_game_popup()
+#			if Input.is_action_just_released("edit_game"):
+#				_load_edit_game_popup()
+#			if Input.is_action_just_released("remove_game"):
+#				_delete_selected_game()
+#			if Input.is_action_just_released("activate_game"):
+#				_hide_selected_game()
+#			if Input.is_action_just_released("settings"):
+#				_load_setting_popup()
+			pass
+		"BackgroundMode":
+			#PREAPRE FOR GAME START
+			
 			if Input.is_action_pressed("ui_end"):
 				#WORK IN BORDERLESS MODE
 				print("process input1")
@@ -177,30 +199,22 @@ func _process(delta):
 					arr = OS.shell_open("C:/Windows/System32/cmd.exe tasklist /v /fo csv")
 					#OS.execute("C:/Windows/System32/cmd.exe", [arg2], false, arr)
 					print(arr)
-					#OS.kill(pid)
-			if Input.is_joy_button_pressed(0, JOY_L) and Input.is_joy_button_pressed(0, JOY_R):
-				#WORK IN FULLSCREEN MODE
-				print("process input2")
-				print("kill pid:" + str(pid))
-				if pid:
-					
 					OS.kill(pid)
-			pass
-		"EditLibrary":
-#			if Input.is_action_just_released("add_game"):
-#				_load_add_game_popup()
-#			if Input.is_action_just_released("edit_game"):
-#				_load_edit_game_popup()
-#			if Input.is_action_just_released("remove_game"):
-#				_delete_selected_game()
-#			if Input.is_action_just_released("activate_game"):
-#				_hide_selected_game()
-#			if Input.is_action_just_released("settings"):
-#				_load_setting_popup()
-			pass
-		"BackgroundMode":
-			#PREAPRE FOR GAME START
-			pass
+			for inp in _input_kill_pid:
+				if not Input.is_joy_button_pressed(0, inp):
+					break
+				if _input_kill_pid[_input_kill_pid.size() - 1] == inp:
+					if pid:
+						OS.kill(pid)
+						switch_to_mode("GameSelection")
+#			if Input.is_joy_button_pressed(0, JOY_L) and Input.is_joy_button_pressed(0, JOY_R):
+#				#WORK IN FULLSCREEN MODE
+#				print("process input2")
+#				print("kill pid:" + str(pid))
+				#if pid:
+#						OS.kill(pid)
+#						switch_to_mode("GameSelection")
+#
 		_:
 			print("Invalid mode in process !")
 
@@ -209,16 +223,22 @@ func switch_to_mode(mode_name):
 		"GameSelection":
 			EditTool.hide()
 			VisualGameList.select(0, true)
-			VisualGameList.emit_signal("item_selected", 0)
-			_current_mode = "GameSelection"
+			SelectionHand.set_hand_on_item(0)
+			#VisualGameList.emit_signal("item_selected", 0)
 			SelectionHand.show()
 			VisualGameList.grab_focus()
+			_current_mode = "GameSelection"
 		"EditLibrary":
+			VisualGameList.select(0, true)
+			SelectionHand.set_hand_on_item(0)
 			EditTool.show()
 			SelectionHand.hide()
+			VisualGameList.grab_focus()
 			_current_mode = "EditLibrary"
 		"BackgroundMode":
+			VisualGameList.release_focus()
 			_current_mode = "BackgroundMode"
+			
 		_:
 			print("Invalid mode name !")
 
@@ -231,14 +251,8 @@ func _handle_app_start(idx):
 		$Confirm.popup_centered()
 		yield($Confirm, "popup_hide")
 		if not $Confirm.is_confirmed:
-			print("false")
-			#lock_input = true
-			#$Timer.start()
 			VisualGameList.grab_focus()
 			return
-	print("true")
-	return
-	switch_to_mode("BackgroundMode")
 	var app_path = Globals.GameLibrary.game_library.games[idx].exe_path
 	var arg_array = Globals.GameLibrary.game_library.games[idx].arguments.split(" ", false)
 	print(arg_array)
@@ -246,11 +260,11 @@ func _handle_app_start(idx):
 	var time = OS.get_time()
 	pid = OS.execute(app_path, arg_array, false, output)
 	print(str(pid) + " output : " +  str(output))
+	if pid:
+		switch_to_mode("BackgroundMode")
 	
 func _on_ItemList_item_activated(index):
 	_handle_app_start(index)
-
-
 
 func _on_Input_Timer_timeout():
 	lock_input = false

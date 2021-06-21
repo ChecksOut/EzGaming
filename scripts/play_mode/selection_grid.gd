@@ -19,6 +19,10 @@ func update_selection():
 func _on_item_selected(idx):
 	SelectionHand.set_global_position(grid_list[idx] - (SelectionHand.rect_size * 0.5))
 
+func set_hand_on_item(idx):
+	if grid_list.size() > idx:
+		SelectionHand.set_global_position(grid_list[idx] - (SelectionHand.rect_size * 0.5))
+
 func _initialize_selection_grid():
 	if Globals.GameHub.VisualGameList.get_item_count() <= 0:
 		return

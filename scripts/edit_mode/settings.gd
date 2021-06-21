@@ -38,7 +38,7 @@ func _on_BGColorPickerButton_color_changed(color):
 	var new_color = StyleBoxFlat.new()
 	new_color.bg_color = color
 	Globals.GameHub.get_node("Panel").theme["Panel/styles/panel"] = new_color
-	Globals.GameHub.GameIconList.theme["ItemList/styles/bg"] = new_color
+	Globals.GameHub.VisualGameList.theme["ItemList/styles/bg"] = new_color
 
 func _on_CloseButton_button_up():
 	Globals.GameHub.lock_input = false
@@ -67,5 +67,21 @@ func _on_BGColorPickerButton_popup_closed():
 
 
 func _on_Button_button_up():
+	pass
 	#var p = ProjectSettings.globalize_path("user://")
-	OS.shell_open("steam://rungameid/813780")
+	#OS.shell_open("steam://rungameid/813780")
+
+
+func _on_KillButton_button_up():
+	$InputReceiver.show()
+	$InputReceiver.set_process(true)
+	$InputReceiver.grab_focus()
+
+
+func _on_SavesLocationButton_button_up():
+	var p = ProjectSettings.globalize_path("user://")
+	OS.shell_open(p)
+
+
+func _on_StartupLocationButton_button_up():
+	pass # Replace with function body.

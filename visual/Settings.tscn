@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://font_Roboto_DF.tres" type="DynamicFont" id=1]
 [ext_resource path="res://scripts/edit_mode/settings.gd" type="Script" id=2]
 [ext_resource path="res://visual/themes/menu_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scripts/edit_mode/emulators/EmulatorsSettings.gd" type="Script" id=4]
+[ext_resource path="res://scripts/edit_mode/settings_button_receiver.gd" type="Script" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -17,6 +18,16 @@ BackgroundColor = NodePath("Panel/Container/VBoxContainer/TabContainer/General/H
 ColumnCount = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6/ColumnCount")
 Fullscreen = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5/CheckButton")
 GameCount = NodePath("Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4/GameCount")
+
+[node name="InputReceiver" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+input_pass_on_modal_close_click = false
+script = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="Panel" parent="."]
 self_modulate = Color( 1, 1, 1, 0.705882 )
@@ -83,8 +94,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="General" type="Control" parent="Panel/Container/VBoxContainer/TabContainer"]
-visible = false
+[node name="General" type="VBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -93,10 +103,8 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 8.0
-margin_right = 618.0
-margin_bottom = 28.0
+margin_right = 614.0
+margin_bottom = 20.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -115,10 +123,9 @@ toggle_mode = false
 text = "Select"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 32.0
-margin_right = 618.0
-margin_bottom = 62.0
+margin_top = 24.0
+margin_right = 614.0
+margin_bottom = 54.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
 margin_top = 5.0
@@ -137,15 +144,14 @@ edit_alpha = false
 
 [node name="Control" type="Control" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
 margin_left = 194.0
-margin_right = 622.0
+margin_right = 614.0
 margin_bottom = 30.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 66.0
-margin_right = 618.0
-margin_bottom = 96.0
+margin_top = 58.0
+margin_right = 614.0
+margin_bottom = 88.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
 margin_top = 5.0
@@ -181,10 +187,9 @@ margin_bottom = 24.0
 custom_fonts/font = ExtResource( 1 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 100.0
-margin_right = 618.0
-margin_bottom = 140.0
+margin_top = 92.0
+margin_right = 614.0
+margin_bottom = 132.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5"]
 margin_top = 10.0
@@ -199,10 +204,9 @@ margin_right = 314.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 144.0
-margin_right = 618.0
-margin_bottom = 168.0
+margin_top = 136.0
+margin_right = 614.0
+margin_bottom = 160.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6"]
 margin_top = 2.0
@@ -220,29 +224,34 @@ max_length = 2
 placeholder_text = "3-10"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 172.0
-margin_right = 618.0
-margin_bottom = 192.0
+margin_top = 164.0
+margin_right = 614.0
+margin_bottom = 184.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
-margin_right = 190.0
+margin_right = 440.0
 margin_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_OPEN_STARTUP"
+autowrap = true
 max_lines_visible = 2
 
-[node name="Button" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
-margin_left = 194.0
-margin_right = 364.0
+[node name="StartupLocationButton" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
+margin_left = 444.0
+margin_right = 614.0
 margin_bottom = 20.0
 text = "BUTTON_OPEN_STARTUP"
+align = 2
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_left = -4.0
-margin_top = 196.0
-margin_right = 618.0
-margin_bottom = 216.0
+margin_top = 188.0
+margin_right = 614.0
+margin_bottom = 208.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
 margin_right = 253.0
@@ -251,13 +260,35 @@ custom_fonts/font = ExtResource( 1 )
 text = "Ouvrir dossier sauvegardes* DEBUG"
 max_lines_visible = 2
 
-[node name="Button" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
+[node name="SavesLocationButton" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
 margin_left = 257.0
 margin_right = 319.0
 margin_bottom = 20.0
 text = "OUVRIR"
 
+[node name="HBoxContainer9" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+margin_top = 212.0
+margin_right = 614.0
+margin_bottom = 232.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer9"]
+margin_right = 150.0
+margin_bottom = 19.0
+custom_fonts/font = ExtResource( 1 )
+text = "SETIING_KILL_INPUT"
+max_lines_visible = 2
+
+[node name="KillButton" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer9"]
+margin_left = 154.0
+margin_right = 312.0
+margin_bottom = 20.0
+text = "SETTING_KILL_BUTTON"
+
 [node name="Emulators" type="Control" parent="Panel/Container/VBoxContainer/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 4.0
@@ -319,11 +350,13 @@ margin_right = 614.0
 margin_bottom = 424.0
 rect_min_size = Vector2( 400, 0 )
 
+[connection signal="draw" from="InputReceiver" to="InputReceiver" method="_on_InputReceiver_draw"]
 [connection signal="button_up" from="Panel/Container/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_CloseButton_button_up"]
 [connection signal="item_selected" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3/LanguageSelector" to="." method="_on_LanguageSelector_item_selected"]
 [connection signal="color_changed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer/BGColorPickerButton" to="." method="_on_BGColorPickerButton_color_changed"]
 [connection signal="popup_closed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer/BGColorPickerButton" to="." method="_on_BGColorPickerButton_popup_closed"]
 [connection signal="pressed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4/ClearLibrary" to="." method="_on_ClearLibrary_pressed"]
 [connection signal="text_entered" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6/ColumnCount" to="." method="_on_ColumnCount_text_entered"]
-[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7/Button" to="." method="_on_Button_button_up"]
-[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8/Button" to="." method="_on_Button_button_up"]
+[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7/StartupLocationButton" to="." method="_on_StartupLocationButton_button_up"]
+[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8/SavesLocationButton" to="." method="_on_SavesLocationButton_button_up"]
+[connection signal="button_up" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer9/KillButton" to="." method="_on_KillButton_button_up"]

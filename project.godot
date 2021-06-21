@@ -20,7 +20,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="IzGaming"
+config/name="EzGaming"
 run/main_scene="res://visual/GameHub.tscn"
 run/low_processor_mode=true
 
