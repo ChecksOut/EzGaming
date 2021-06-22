@@ -85,3 +85,7 @@ func _on_SavesLocationButton_button_up():
 
 func _on_StartupLocationButton_button_up():
 	pass # Replace with function body.
+
+
+func _on_InputReceiver_hide():
+	pass # Replace with function body.

@@ -33,7 +33,16 @@ func load_game_infos(game):
 	get_node(currentValueShow).set_pressed(game.hide)
 	#if game.texture_path = ""
 	set_game_icon_path(game.texture_path)
-	get_node(CurrentGameIcon).texture = load(game_icon_path)
+	#var selected_icon = load(path)
+	var img = Image.new()
+	var texture
+	var err = img.load(game.texture_path)
+	if err == OK:
+		texture = ImageTexture.new()
+		texture.create_from_image(img)
+		#get_node(CurrentGameIcon).texture = texture
+	if texture:
+		get_node(CurrentGameIcon).texture = texture
 	get_node(currentArguments).text = game.arguments
 
 func _on_ExeFileDialog_file_selected(path):

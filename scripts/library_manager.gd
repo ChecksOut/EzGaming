@@ -7,6 +7,7 @@ const GameList = preload("res://res_game_library.gd")
 onready var game_library := GameList.new()
 
 signal library_updated
+signal exit_ready
 #var _current_library : Dictionary = {}
 
 func _init():
@@ -14,6 +15,9 @@ func _init():
 	load_library_from_disk()
 	#_add_shutdown_icon()
 	pass
+	
+func _exit_tree():
+	emit_signal("exit_ready")
 	
 func _add_shutdown_icon():
 	var game_res = load("res://res_game_node.gd")

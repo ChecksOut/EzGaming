@@ -61,29 +61,29 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/Container/VBoxContainer"]
-margin_right = 622.0
-margin_bottom = 20.0
+margin_right = 826.0
+margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/HBoxContainer2"]
-margin_right = 598.0
-margin_bottom = 19.0
+margin_right = 802.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_TITLE"
 align = 1
 
 [node name="CloseButton" type="Button" parent="Panel/Container/VBoxContainer/HBoxContainer2"]
-margin_left = 602.0
-margin_right = 622.0
-margin_bottom = 20.0
+margin_left = 806.0
+margin_right = 826.0
+margin_bottom = 38.0
 text = "X"
 
 [node name="TabContainer" type="TabContainer" parent="Panel/Container/VBoxContainer"]
-margin_top = 24.0
-margin_right = 622.0
+margin_top = 42.0
+margin_right = 826.0
 margin_bottom = 484.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -103,76 +103,73 @@ margin_right = -4.0
 margin_bottom = -4.0
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_right = 614.0
-margin_bottom = 20.0
+margin_right = 818.0
+margin_bottom = 38.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3"]
-margin_right = 103.0
-margin_bottom = 19.0
+margin_right = 205.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_LNG"
 
 [node name="LanguageSelector" type="OptionButton" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3"]
-margin_left = 107.0
-margin_right = 175.0
-margin_bottom = 20.0
+margin_left = 209.0
+margin_right = 277.0
+margin_bottom = 38.0
 toggle_mode = false
 text = "Select"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 24.0
-margin_right = 614.0
-margin_bottom = 54.0
+margin_top = 42.0
+margin_right = 818.0
+margin_bottom = 80.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
-margin_top = 5.0
-margin_right = 151.0
-margin_bottom = 24.0
+margin_right = 301.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_BG_COLOR"
 
 [node name="BGColorPickerButton" type="ColorPickerButton" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
-margin_left = 155.0
-margin_right = 190.0
-margin_bottom = 30.0
+margin_left = 305.0
+margin_right = 340.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 35, 30 )
 shortcut_in_tooltip = false
 edit_alpha = false
 
 [node name="Control" type="Control" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer"]
-margin_left = 194.0
-margin_right = 614.0
-margin_bottom = 30.0
+margin_left = 344.0
+margin_right = 818.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 58.0
-margin_right = 614.0
-margin_bottom = 88.0
+margin_top = 84.0
+margin_right = 818.0
+margin_bottom = 122.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
-margin_top = 5.0
-margin_right = 150.0
-margin_bottom = 24.0
+margin_right = 300.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_CLEAR_LIB"
 
 [node name="ClearLibrary" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
-margin_left = 154.0
-margin_right = 351.0
-margin_bottom = 30.0
+margin_left = 304.0
+margin_right = 501.0
+margin_bottom = 38.0
 rect_min_size = Vector2( 60, 30 )
 text = "SETTING_CLEAR_LIB_BUTTON"
 expand_icon = true
 
 [node name="Label3" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
-margin_left = 355.0
-margin_top = 5.0
-margin_right = 509.0
-margin_bottom = 24.0
+margin_left = 505.0
+margin_right = 814.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_LIB_COUNT"
 __meta__ = {
@@ -180,57 +177,55 @@ __meta__ = {
 }
 
 [node name="GameCount" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer4"]
-margin_left = 513.0
-margin_top = 5.0
-margin_right = 513.0
-margin_bottom = 24.0
+margin_left = 818.0
+margin_right = 818.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 92.0
-margin_right = 614.0
-margin_bottom = 132.0
+margin_top = 126.0
+margin_right = 818.0
+margin_bottom = 166.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5"]
-margin_top = 10.0
-margin_right = 234.0
-margin_bottom = 29.0
+margin_top = 1.0
+margin_right = 468.0
+margin_bottom = 39.0
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_FULLSCREEN_SWITCH"
 
 [node name="CheckButton" type="CheckButton" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer5"]
-margin_left = 238.0
-margin_right = 314.0
+margin_left = 472.0
+margin_right = 548.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 136.0
-margin_right = 614.0
-margin_bottom = 160.0
+margin_top = 170.0
+margin_right = 818.0
+margin_bottom = 208.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6"]
-margin_top = 2.0
-margin_right = 196.0
-margin_bottom = 21.0
+margin_right = 395.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = "SETTING_COLUMN_COUNT"
 
 [node name="ColumnCount" type="LineEdit" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6"]
-margin_left = 200.0
-margin_right = 258.0
-margin_bottom = 24.0
+margin_left = 399.0
+margin_right = 457.0
+margin_bottom = 38.0
 align = 1
 max_length = 2
 placeholder_text = "3-10"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 164.0
-margin_right = 614.0
-margin_bottom = 184.0
+margin_top = 212.0
+margin_right = 818.0
+margin_bottom = 250.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
-margin_right = 440.0
-margin_bottom = 19.0
+margin_right = 644.0
+margin_bottom = 38.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
 custom_fonts/font = ExtResource( 1 )
@@ -239,52 +234,52 @@ autowrap = true
 max_lines_visible = 2
 
 [node name="StartupLocationButton" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
-margin_left = 444.0
-margin_right = 614.0
-margin_bottom = 20.0
+margin_left = 648.0
+margin_right = 818.0
+margin_bottom = 38.0
 text = "BUTTON_OPEN_STARTUP"
 align = 2
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 188.0
-margin_right = 614.0
-margin_bottom = 208.0
+margin_top = 254.0
+margin_right = 818.0
+margin_bottom = 292.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
-margin_right = 253.0
-margin_bottom = 19.0
+margin_right = 515.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
 text = "Ouvrir dossier sauvegardes* DEBUG"
 max_lines_visible = 2
 
 [node name="SavesLocationButton" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer8"]
-margin_left = 257.0
-margin_right = 319.0
-margin_bottom = 20.0
+margin_left = 519.0
+margin_right = 581.0
+margin_bottom = 38.0
 text = "OUVRIR"
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 212.0
-margin_right = 614.0
-margin_bottom = 232.0
+margin_top = 296.0
+margin_right = 818.0
+margin_bottom = 334.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer9"]
-margin_right = 150.0
-margin_bottom = 19.0
+margin_right = 312.0
+margin_bottom = 38.0
 custom_fonts/font = ExtResource( 1 )
-text = "SETIING_KILL_INPUT"
+text = "SETTING_KILL_INPUT"
 max_lines_visible = 2
 
 [node name="KillButton" type="Button" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer9"]
-margin_left = 154.0
-margin_right = 312.0
-margin_bottom = 20.0
+margin_left = 316.0
+margin_right = 474.0
+margin_bottom = 38.0
 text = "SETTING_KILL_BUTTON"
 
 [node name="Emulators" type="Control" parent="Panel/Container/VBoxContainer/TabContainer"]
@@ -351,6 +346,7 @@ margin_bottom = 424.0
 rect_min_size = Vector2( 400, 0 )
 
 [connection signal="draw" from="InputReceiver" to="InputReceiver" method="_on_InputReceiver_draw"]
+[connection signal="hide" from="InputReceiver" to="InputReceiver" method="_on_InputReceiver_hide"]
 [connection signal="button_up" from="Panel/Container/VBoxContainer/HBoxContainer2/CloseButton" to="." method="_on_CloseButton_button_up"]
 [connection signal="item_selected" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer3/LanguageSelector" to="." method="_on_LanguageSelector_item_selected"]
 [connection signal="color_changed" from="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer/BGColorPickerButton" to="." method="_on_BGColorPickerButton_color_changed"]

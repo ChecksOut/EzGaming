@@ -6,12 +6,10 @@ var EditTool
 export(PackedScene) var SettingsScene
 export(PackedScene) var AddGameScene
 export(PackedScene) var EditGameScene
-
-onready var StateManager = $StateManager
-
 export(NodePath) var _ItemListPath
 var VisualGameList
 
+onready var ShutdownConfirm = preload("res://visual/ConfirmPopup.tscn")
 onready var SelectionHand = $Selection
 
 #const ICON_RATIO := 1 #1.778 is 16/9
@@ -68,21 +66,24 @@ func _initialize_edit_tool():
 
 func _rebuild_visual_game_list():
 	VisualGameList.clear()
-	var texture = Texture.new()
+	#var texture = Texture.new()
 	if Globals.GameLibrary.get_game_library() == null:
 		print("Invalid or missing Game Library")
 		return
 	for game in Globals.GameLibrary.get_game_library().games:
 		if (_current_mode == "GameSelection" and game.hide == false) or _current_mode == "EditLibrary":
-			var img = Image.new()
-			var err = img.load(game.texture_path)
-			if err != OK:
-				print("game name: " + game.name)
-				print("caca")
-			var tex = ImageTexture.new()
-			tex.create_from_image(img)
-			texture = tex
-			VisualGameList.add_icon_item(tex, true)
+			#var img = Image.new()
+			var img_texture: StreamTexture = load(game.texture_path)
+			#var img_texture := StreamTexture.new()
+			#var err = img_texture.load(game.texture_path)
+			#var err = img.load(game.texture_path)
+#			if err != OK:
+#				print("game name: " + game.name)
+#				print("caca")
+			#var tex = ImageTexture.new()
+			#tex.create_from_image(img)
+			#texture = tex
+			VisualGameList.add_icon_item(img_texture, true)
 	VisualGameList.select(0, true)
 	VisualGameList.grab_focus()
 
@@ -147,7 +148,11 @@ func _gui_input(event):
 func _process(delta):
 	
 	VisualGameList.ensure_current_is_visible()
-	if Input.is_action_pressed("exit_app"):
+	if Input.is_action_just_released("exit_app"):
+		#self.queue_free()
+		Globals.GameLibrary.free()
+		Globals.Configuration.free()
+		#yield(Globals.GameLibrary, "exit_ready")
 		get_tree().quit()
 	if lock_input:
 		return
@@ -246,11 +251,16 @@ func _set_language(loc):
 	TranslationServer.set_locale(loc)
 	
 func _handle_app_start(idx):
+	if not _current_mode == "GameSelection":
+		return
 	# IF is button shutdown
 	if idx == 0:
-		$Confirm.popup_centered()
-		yield($Confirm, "popup_hide")
-		if not $Confirm.is_confirmed:
+		var confirm_instance = ShutdownConfirm.instance()
+		add_child(confirm_instance)
+		confirm_instance.set_owner(self)
+		confirm_instance.popup_centered()
+		yield(confirm_instance, "popup_hide")
+		if not confirm_instance.is_confirmed:
 			VisualGameList.grab_focus()
 			return
 	var app_path = Globals.GameLibrary.game_library.games[idx].exe_path

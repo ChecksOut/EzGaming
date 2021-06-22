@@ -31,10 +31,9 @@ func _process(delta):
 	if Input.is_joy_button_pressed(0, JOY_START):
 		if not buttons_kill_pid.has(JOY_START):
 			buttons_kill_pid.append(JOY_START)
-	if Input.is_key_pressed(KEY_ENTER):
+	if Input.is_action_just_released("ui_accept"):
 		set_process(false)
 		print(buttons_kill_pid)
-		Globals.GameHub.set_input_kill_pid(buttons_kill_pid)
 		hide()
 	get_tree().set_input_as_handled()
 
@@ -43,3 +42,7 @@ func _on_InputReceiver_draw():
 	buttons_kill_pid.clear()
 	print("Caca")
 	pass # Replace with function body.
+
+
+func _on_InputReceiver_hide():
+			Globals.GameHub.set_input_kill_pid(buttons_kill_pid)

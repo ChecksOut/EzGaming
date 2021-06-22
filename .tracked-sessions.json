@@ -2650,5 +2650,85 @@
         "stopped_at": 1624239118
       }
     ]
+  },
+  {
+    "session_name": "Session #34",
+    "elapsed_time": 1821,
+    "started_at": 1624323053,
+    "stopped_at": 1624324874,
+    "sections": [
+      {
+        "view": "2D",
+        "elapsed_time": 24,
+        "started_at": 1624323053,
+        "stopped_at": 1624323077
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 66,
+        "started_at": 1624323077,
+        "stopped_at": 1624323143
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 1,
+        "started_at": 1624323143,
+        "stopped_at": 1624323144
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 7,
+        "started_at": 1624323144,
+        "stopped_at": 1624323151
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 20,
+        "started_at": 1624323151,
+        "stopped_at": 1624323171
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 50,
+        "started_at": 1624323171,
+        "stopped_at": 1624323221
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 4,
+        "started_at": 1624323221,
+        "stopped_at": 1624323225
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 9,
+        "started_at": 1624323225,
+        "stopped_at": 1624323234
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 7,
+        "started_at": 1624323234,
+        "stopped_at": 1624323241
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 78,
+        "started_at": 1624323241,
+        "stopped_at": 1624323319
+      },
+      {
+        "view": "2D",
+        "elapsed_time": 2,
+        "started_at": 1624323319,
+        "stopped_at": 1624323321
+      },
+      {
+        "view": "Script",
+        "elapsed_time": 1553,
+        "started_at": 1624323321,
+        "stopped_at": 1624324874
+      }
+    ]
   }
 ]
