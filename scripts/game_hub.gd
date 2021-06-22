@@ -26,13 +26,16 @@ func set_input_kill_pid(arr):
 
 func _ready():
 	#_loading_state.resume()
-	_setup_window()
+	
 	VisualGameList = get_node(_ItemListPath)
 	Globals.GameHub = self
 	Globals.Configuration.reload_configuration()
+	_setup_window()
 	_initialize_configuration()
 	Globals.GameLibrary.connect("library_updated", self, "_on_library_updated")
 	Globals.Configuration.connect("configuration_updated", self, "_on_configuration_updated")
+	if Globals.GameLibrary.game_library.games.size() == 0:
+		Globals.GameLibrary.clear_library()
 	_rebuild_visual_game_list()
 	_initialize_edit_tool()
 	switch_to_mode("GameSelection")

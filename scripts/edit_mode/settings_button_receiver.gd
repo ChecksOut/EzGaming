@@ -43,6 +43,6 @@ func _on_InputReceiver_draw():
 	print("Caca")
 	pass # Replace with function body.
 
-
 func _on_InputReceiver_hide():
-			Globals.GameHub.set_input_kill_pid(buttons_kill_pid)
+	Globals.Configuration.update_config_value("kill_process_input", buttons_kill_pid)
+	Globals.GameHub.set_input_kill_pid(buttons_kill_pid)

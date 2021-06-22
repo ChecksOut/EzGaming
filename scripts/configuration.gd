@@ -15,6 +15,7 @@ func _create_new_config_file():
 	config.set_value("General", "language", "fr")
 	config.set_value("General", "column_count", 6)
 	config.set_value("General", "background_color", Color.red)
+	config.set_value("General", "kill_process_input", [4,5,10,11])
 	config.save(_CFG_PATH)
 	
 func update_config_value(key, new_value):
@@ -27,7 +28,6 @@ func update_config_value(key, new_value):
 	
 func reload_configuration():
 	_load_config_from_disk()
-	
 	
 func _load_config_from_disk():
 	var config = ConfigFile.new()
@@ -53,6 +53,11 @@ func _load_config_from_disk():
 			current["background_color"] = config.get_value("General", "background_color")
 		else:
 			config.set_value("General", "background_color", Color.red)
+		if config.has_section_key("General", "kill_process_input"):
+			current["kill_process_input"] = config.get_value("General", "kill_process_input")
+		else:
+			#default is   L1 + R1 + Start + Select
+			config.set_value("General", "kill_process_input", [4,5,10,11])
 		config.save(_CFG_PATH)
 	else:
 		_create_new_config_file()
