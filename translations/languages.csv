@@ -26,8 +26,8 @@ LIB_HIDE_GAME,Show/Hide selected game,Afficher/Masquer jeu sélectionné
 LABEL_EDIT_MODE,Edit mode,Mode édition
 STANDBY_WAIT,"Game is starting, please stand-by","Démarrage du jeu, veuillez patienter"
 SETTING_COLUMN_COUNT,Number of games per line,Nombre de jeu par rangés
-BUTTON_OPEN_STARTUP,Open Startup folder,Ouvrier dossier “Startup”
+BUTTON_OPEN_STARTUP,Open Startup folder,Ouvrir dossier “Startup”
 SETTING_OPEN_STARTUP,Place a shortcut to the .exe here to start with windows,Placer un raccourcis vers l’application dans ce dossier pour démarrer avec windows
-SHUTDOWN_CONFIRM_MESSAGE,Do you really want to shutdown the computer?,Voulez-vous vraiment étindre l’ordinateur?
+SHUTDOWN_CONFIRM_MESSAGE,Do you really want to shutdown the computer?,Voulez-vous vraiment éteindre l’ordinateur?
 SETTING_KILL_INPUT,Choose buttons to close current game,Choisir les boutons pour fermer le jeu en cours
 SETTING_KILL_BUTTON,Set,Paramétrer

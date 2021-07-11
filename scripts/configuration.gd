@@ -18,14 +18,16 @@ func _create_new_config_file():
 	config.set_value("General", "kill_process_input", [4,5,10,11])
 	config.save(_CFG_PATH)
 	
-func update_config_value(key, new_value):
+func update_config_value(key, new_value, reload_scene := true):
 	var config = ConfigFile.new()
 	var err = config.load(_CFG_PATH)
 	if err == OK:
 		config.set_value("General", key, new_value)
 		config.save(_CFG_PATH)
-	emit_signal("configuration_updated")
-	
+		current[key] = new_value
+	if reload_scene:
+		emit_signal("configuration_updated")
+
 func reload_configuration():
 	_load_config_from_disk()
 	
@@ -58,6 +60,16 @@ func _load_config_from_disk():
 		else:
 			#default is   L1 + R1 + Start + Select
 			config.set_value("General", "kill_process_input", [4,5,10,11])
+		if config.has_section_key("General", "last_exe_path"):
+			current["last_exe_path"] = config.get_value("General", "last_exe_path")
+		else:
+			#default is   L1 + R1 + Start + Select
+			config.set_value("General", "last_exe_path", "C://")
+		if config.has_section_key("General", "last_tex_path"):
+			current["last_tex_path"] = config.get_value("General", "last_tex_path")
+		else:
+			#default is   L1 + R1 + Start + Select
+			config.set_value("General", "last_tex_path", "C://")
 		config.save(_CFG_PATH)
 	else:
 		_create_new_config_file()

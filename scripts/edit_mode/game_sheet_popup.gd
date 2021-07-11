@@ -25,6 +25,8 @@ func set_game_icon_path(path):
 func _ready():
 	Globals.GameHub.lock_input = true
 	game_icon_path = default_texture
+	$ExeFileDialog.current_dir = Globals.Configuration.current["last_exe_path"]
+	$TextureFileDialog.current_dir = Globals.Configuration.current["last_tex_path"]
 	grab_focus()
 
 func load_game_infos(game):
@@ -47,18 +49,24 @@ func load_game_infos(game):
 
 func _on_ExeFileDialog_file_selected(path):
 	get_node(CurrentExePath).text = path
+	path = path.rsplit("/", false, 1)[0]
+	Globals.Configuration.update_config_value("last_exe_path", path, false)
 
 func _on_TextureFileDialog_file_selected(path):
 	var selected_icon = load(path)
 	var img = Image.new()
 	var err = img.load(path)
 	if err == OK:
+		
 		var texture = ImageTexture.new()
 		texture.create_from_image(img)
 		get_node(CurrentGameIcon).texture = texture
 		game_icon_path = path
+		path = path.rsplit("/", false, 1)[0]
+		Globals.Configuration.update_config_value("last_tex_path", path, false)
 	else:
 		print(selected_icon)
+		
 func _on_CancelSheet_button_up():
 	_close_popup()
 
@@ -79,7 +87,7 @@ func _on_SaveSheet_button_up():
 		#game.texture_path = get_node(CurrentGameIcon).texture.get_path()
 	#Globals.GameLibrary.add_game_to_library(game)
 	get_parent().handle_save(game)
-	_close_popup()
+	#_close_popup()
 
 func _on_TextureAdd_button_up():
 	get_node(TextureFileDialog).popup()

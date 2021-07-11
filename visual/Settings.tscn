@@ -183,6 +183,7 @@ margin_bottom = 29.0
 custom_fonts/font = ExtResource( 1 )
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
+visible = false
 margin_top = 101.0
 margin_right = 669.0
 margin_bottom = 141.0
@@ -200,9 +201,9 @@ margin_right = 432.0
 margin_bottom = 40.0
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 145.0
+margin_top = 101.0
 margin_right = 669.0
-margin_bottom = 174.0
+margin_bottom = 130.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer6"]
 margin_right = 298.0
@@ -219,9 +220,9 @@ max_length = 2
 placeholder_text = "3-10"
 
 [node name="HBoxContainer7" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 178.0
+margin_top = 134.0
 margin_right = 669.0
-margin_bottom = 207.0
+margin_bottom = 163.0
 
 [node name="Label" type="Label" parent="Panel/Container/VBoxContainer/TabContainer/General/HBoxContainer7"]
 margin_right = 495.0
@@ -241,9 +242,9 @@ text = "BUTTON_OPEN_STARTUP"
 align = 2
 
 [node name="HBoxContainer8" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 211.0
+margin_top = 167.0
 margin_right = 669.0
-margin_bottom = 240.0
+margin_bottom = 196.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -262,9 +263,9 @@ margin_bottom = 29.0
 text = "OUVRIR"
 
 [node name="HBoxContainer9" type="HBoxContainer" parent="Panel/Container/VBoxContainer/TabContainer/General"]
-margin_top = 244.0
+margin_top = 200.0
 margin_right = 669.0
-margin_bottom = 273.0
+margin_bottom = 229.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

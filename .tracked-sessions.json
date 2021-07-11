@@ -2750,5 +2750,19 @@
         "stopped_at": 1624349476
       }
     ]
+  },
+  {
+    "session_name": "Session #36",
+    "elapsed_time": 8,
+    "started_at": 1624364573,
+    "stopped_at": 1624364581,
+    "sections": [
+      {
+        "view": "Script",
+        "elapsed_time": 8,
+        "started_at": 1624364573,
+        "stopped_at": 1624364581
+      }
+    ]
   }
 ]

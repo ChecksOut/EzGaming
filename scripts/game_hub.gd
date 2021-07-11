@@ -75,18 +75,18 @@ func _rebuild_visual_game_list():
 		return
 	for game in Globals.GameLibrary.get_game_library().games:
 		if (_current_mode == "GameSelection" and game.hide == false) or _current_mode == "EditLibrary":
-			#var img = Image.new()
+			var img = Image.new()
 			var img_texture: StreamTexture = load(game.texture_path)
 			#var img_texture := StreamTexture.new()
 			#var err = img_texture.load(game.texture_path)
-			#var err = img.load(game.texture_path)
-#			if err != OK:
-#				print("game name: " + game.name)
-#				print("caca")
-			#var tex = ImageTexture.new()
-			#tex.create_from_image(img)
+			var err = img.load(game.texture_path)
+			if err != OK:
+				print("game name: " + game.name)
+				print("caca")
+			var tex = ImageTexture.new()
+			tex.create_from_image(img)
 			#texture = tex
-			VisualGameList.add_icon_item(img_texture, true)
+			VisualGameList.add_icon_item(tex, true)
 	VisualGameList.select(0, true)
 	VisualGameList.grab_focus()
 
@@ -214,7 +214,7 @@ func _process(delta):
 				if _input_kill_pid[_input_kill_pid.size() - 1] == inp:
 					if pid:
 						OS.kill(pid)
-						switch_to_mode("GameSelection")
+						call_deferred("switch_to_mode", "GameSelection")
 #			if Input.is_joy_button_pressed(0, JOY_L) and Input.is_joy_button_pressed(0, JOY_R):
 #				#WORK IN FULLSCREEN MODE
 #				print("process input2")
@@ -229,6 +229,7 @@ func _process(delta):
 func switch_to_mode(mode_name):
 	match mode_name:
 		"GameSelection":
+			OS.set_window_always_on_top(true)
 			EditTool.hide()
 			VisualGameList.select(0, true)
 			SelectionHand.set_hand_on_item(0)
@@ -244,6 +245,7 @@ func switch_to_mode(mode_name):
 			VisualGameList.grab_focus()
 			_current_mode = "EditLibrary"
 		"BackgroundMode":
+			OS.set_window_always_on_top(false)
 			VisualGameList.release_focus()
 			_current_mode = "BackgroundMode"
 			
@@ -266,15 +268,18 @@ func _handle_app_start(idx):
 		if not confirm_instance.is_confirmed:
 			VisualGameList.grab_focus()
 			return
+		OS.shell_open("powercfg -hibernate off")
+			#OS.shell_open( %windir%\System32\rundll32.exe powrprof.dll,SetSuspendState Standby  &&  ping -n 3 127.0.0.1  &&  powercfg -hibernate on)
 	var app_path = Globals.GameLibrary.game_library.games[idx].exe_path
 	var arg_array = Globals.GameLibrary.game_library.games[idx].arguments.split(" ", false)
+	switch_to_mode("BackgroundMode")
 	print(arg_array)
 	var output = []
 	var time = OS.get_time()
 	pid = OS.execute(app_path, arg_array, false, output)
 	print(str(pid) + " output : " +  str(output))
-	if pid:
-		switch_to_mode("BackgroundMode")
+	if not pid:
+		switch_to_mode("GameSelection")
 	
 func _on_ItemList_item_activated(index):
 	_handle_app_start(index)

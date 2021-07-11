@@ -24,8 +24,9 @@ func _add_shutdown_icon():
 	var shutdown_icon = game_res.new()
 	shutdown_icon.texture_path = "res://visual/icons/shutdown.png"
 	shutdown_icon.name = "Shutdown"
-	shutdown_icon.exe_path = "C:/Windows/System32/shutdown.exe"
-	shutdown_icon.arguments = "/p /f"
+	shutdown_icon.exe_path = "C:/Windows/System32/cmd.exe"
+	#shutdown_icon.arguments = "/p /f"
+	shutdown_icon.arguments = "powercfg.exe /hibernate off %windir%/System32/rundll32.exe powrprof.dll SetSuspendState 0,1,0"
 	game_library.games.push_front(shutdown_icon)
 
 func edit_hide_mode(id):
