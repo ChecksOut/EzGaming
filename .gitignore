@@ -2,4 +2,11 @@
 *.exe
 *.pck
 *.zip
+_debug_res/
+addons/time-tracker/
+.tracked-sessions.json
+timer_tracker.json
+*.TMP
+*.txt
+
 
